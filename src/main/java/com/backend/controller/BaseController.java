@@ -17,8 +17,32 @@ public class BaseController {
 
     private final ExcelPOIHelper excelService;
 
-    @RequestMapping("/test")
+    @RequestMapping("/create")
     public String createExcelFile(){
+
+        try {
+            /*
+             * TODO 
+             * 1. DB에서 데이터를 받아온다.
+             * 2. 받아온 데이터를 정해진 형식으로 formatting 한다.
+             *   2-1.   fileName: String,
+             *          sheetName: List<String>,
+             *          tableTitle: List<String>.
+             *          headerList: List<List<String>>,
+             *          dataList: List<List<Map<String: String>>>,
+             *          headerKey?: List<<List<String>>>
+             *  3. workBook, sheet, row, cell 순으로 만든다.
+             */
+            excelService.writeExcel();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return "Success";
+    }
+
+    @RequestMapping("/read")
+    public String ReadExcelFile(){
 
         try {
             excelService.writeExcel();

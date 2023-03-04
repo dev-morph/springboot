@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.excel.ExcelPOIHelper;
+import com.backend.excel.ExcelUtil;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 public class BaseController {
 
     private final ExcelPOIHelper excelService;
+    private final ExcelUtil excelUtil;
 
     @RequestMapping("/create")
     public String createExcelFile(){
@@ -33,7 +35,7 @@ public class BaseController {
              *          headerKey?: List<<List<String>>>
              *  3. workBook, sheet, row, cell 순으로 만든다.
              */
-            excelService.writeExcel();
+            excelUtil.makeExcelWithDatas()
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

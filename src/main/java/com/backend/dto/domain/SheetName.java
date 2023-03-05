@@ -1,10 +1,16 @@
 package com.backend.dto.domain;
 
-public class SheetName<T> {
-    
-    private final T sheetName;
+import java.util.List;
 
-    public SheetName(T sheetName){
-        this.sheetName = sheetName;
+public class SheetName {
+    public String sheet;
+    public List<String> sheetList;
+
+    public SheetName(String sheet) {
+        this.sheet = sheet;
+    }
+
+    public SheetName(List<String> sheetList) {
+        this.sheetList = sheetList;
     }
 }

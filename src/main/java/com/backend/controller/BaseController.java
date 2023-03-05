@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.backend.dto.ExcelMasterDTO;
 import com.backend.excel.ExcelPOIHelper;
 import com.backend.excel.ExcelUtil;
 
@@ -20,7 +21,7 @@ public class BaseController {
     private final ExcelUtil excelUtil;
 
     @RequestMapping("/create")
-    public String createExcelFile(){
+    public String createExcelFile(ExcelMasterDTO datas){
 
         try {
             /*
@@ -35,8 +36,8 @@ public class BaseController {
              *          headerKey?: List<<List<String>>>
              *  3. workBook, sheet, row, cell 순으로 만든다.
              */
-            excelUtil.makeExcelWithDatas()
-        } catch (IOException e) {
+            excelUtil.makeExcelWithDatas(datas);
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
